@@ -6,7 +6,7 @@
 {{ widget.value|json_script:script_id }}
 {% endwith %}
 
-<script>
+<script {% if request.csp_nonce %}nonce="{{ request.csp_nonce }}"{% endif %}>
     (function() {
         var container = document.getElementById("{{ widget.attrs.id }}");
         var textarea = document.getElementById("{{widget.attrs.id}}_textarea");
